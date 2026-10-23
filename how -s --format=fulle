@@ -1,0 +1,216 @@
+[33mcommit 50a30fba597656b0f6520db1ea13cd9eb6d73fce[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: Kristian Amosco <kristianocsoma@gmail.com>
+Date:   Fri Oct 23 10:31:13 2026 +0800
+
+    Submitting my Pre Final HAHAHA
+
+[1mdiff --git a/README.md b/README.md[m
+[1mnew file mode 100644[m
+[1mindex 0000000..df82a90[m
+[1m--- /dev/null[m
+[1m+++ b/README.md[m
+[36m@@ -0,0 +1,24 @@[m
+[32m+[m[32m# Pre_Final_Amosco[m
+[32m+[m[32m## Run[m
+[32m+[m
+[32m+[m[32m```bash[m
+[32m+[m[32mnpm install[m
+[32m+[m[32mnpm run dev[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m## Build and lint[m
+[32m+[m
+[32m+[m[32m```bash[m
+[32m+[m[32mnpm run build[m
+[32m+[m[32mnpm run lint[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m## Pages[m
+[32m+[m
+[32m+[m[32m- `/`[m
+[32m+[m[32m- `/burger/:id`[m[41m [m
+[32m+[m[32m- `/add`[m[41m [m
+[32m+[m[32m- `/cart`[m[41m [m
+[32m+[m[32m- `/about`[m[41m [m
+[32m+[m[32m- `/contact`[m
+[32m+[m[32m## Third-party notices[m
+\ No newline at end of file[m
+[1mdiff --git a/eslint.config.js b/eslint.config.js[m
+[1mnew file mode 100644[m
+[1mindex 0000000..092408a[m
+[1m--- /dev/null[m
+[1m+++ b/eslint.config.js[m
+[36m@@ -0,0 +1,28 @@[m
+[32m+[m[32mimport js from '@eslint/js'[m
+[32m+[m[32mimport globals from 'globals'[m
+[32m+[m[32mimport reactHooks from 'eslint-plugin-react-hooks'[m
+[32m+[m[32mimport reactRefresh from 'eslint-plugin-react-refresh'[m
+[32m+[m[32mimport tseslint from 'typescript-eslint'[m
+[32m+[m
+[32m+[m[32mexport default tseslint.config([m
+[32m+[m[32m  { ignores: ['dist'] },[m
+[32m+[m[32m  {[m
+[32m+[m[32m    extends: [js.configs.recommended, ...tseslint.configs.recommended],[m
+[32m+[m[32m    files: ['**/*.{ts,tsx}'],[m
+[32m+[m[32m    languageOptions: {[m
+[32m+[m[32m      ecmaVersion: 2020,[m
+[32m+[m[32m      globals: globals.browser,[m
+[32m+[m[32m    },[m
+[32m+[m[32m    plugins: {[m
+[32m+[m[32m      'react-hooks': reactHooks,[m
+[32m+[m[32m      'react-refresh': reactRefresh,[m
+[32m+[m[32m    },[m
+[32m+[m[32m    rules: {[m
+[32m+[m[32m      ...reactHooks.configs.recommended.rules,[m
+[32m+[m[32m      'react-refresh/only-export-components': [[m
+[32m+[m[32m        'warn',[m
+[32m+[m[32m        { allowConstantExport: true },[m
+[32m+[m[32m      ],[m
+[32m+[m[32m    },[m
+[32m+[m[32m  },[m
+[32m+[m[32m)[m
+[1mdiff --git a/index.html b/index.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d87bc17[m
+[1m--- /dev/null[m
+[1m+++ b/index.html[m
+[36m@@ -0,0 +1,18 @@[m
+[32m+[m[32m<!doctype html>[m
+[32m+[m[32m<html lang="en">[m
+[32m+[m[32m  <head>[m
+[32m+[m[32m    <meta charset="UTF-8" />[m
+[32m+[m[32m    <meta name="viewport" content="width=device-width, initial-scale=1.0" />[m
+[32m+[m[32m    <title>Pre_Final_Amosco</title>[m
+[32m+[m[32m    <link rel="preconnect" href="https://fonts.googleapis.com" />[m
+[32m+[m[32m    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />[m
+[32m+[m[32m    <link[m
+[32m+[m[32m      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"[m
+[32m+[m[32m      rel="stylesheet"[m
+[32m+[m[32m    />[m
+[32m+[m[32m  </head>[m
+[32m+[m[32m  <body>[m
+[32m+[m[32m    <div id="root"></div>[m
+[32m+[m[32m    <script type="module" src="/src/main.tsx"></script>[m
+[32m+[m[32m  </body>[m
+[32m+[m[32m</html>[m
+[1mdiff --git a/node_modules/.bin/acorn b/node_modules/.bin/acorn[m
+[1mnew file mode 100644[m
+[1mindex 0000000..679bd16[m
+[1m--- /dev/null[m
+[1m+++ b/node_modules/.bin/acorn[m
+[36m@@ -0,0 +1,16 @@[m
+[32m+[m[32m#!/bin/sh[m
+[32m+[m[32mbasedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")[m
+[32m+[m
+[32m+[m[32mcase `uname` in[m
+[32m+[m[32m    *CYGWIN*|*MINGW*|*MSYS*)[m
+[32m+[m[32m        if command -v cygpath > /dev/null 2>&1; then[m
+[32m+[m[32m            basedir=`cygpath -w "$basedir"`[m
+[32m+[m[32m        fi[m
+[32m+[m[32m    ;;[m
+[32m+[m[32mesac[m
+[32m+[m
+[32m+[m[32mif [ -x "$basedir/node" ]; then[m
+[32m+[m[32m  exec "$basedir/node"  "$basedir/../acorn/bin/acorn" "$@"[m
+[32m+[m[32melse[m[41m [m
+[32m+[m[32m  exec node  "$basedir/../acorn/bin/acorn" "$@"[m
+[32m+[m[32mfi[m
+[1mdiff --git a/node_modules/.bin/acorn.cmd b/node_modules/.bin/acorn.cmd[m
+[1mnew file mode 100644[m
+[1mindex 0000000..a9324df[m
+[1m--- /dev/null[m
+[1m+++ b/node_modules/.bin/acorn.cmd[m
+[36m@@ -0,0 +1,17 @@[m
+[32m+[m[32m@ECHO off[m
+[32m+[m[32mGOTO start[m
+[32m+[m[32m:find_dp0[m
+[32m+[m[32mSET dp0=%~dp0[m
+[32m+[m[32mEXIT /b[m
+[32m+[m[32m:start[m
+[32m+[m[32mSETLOCAL[m
+[32m+[m[32mCALL :find_dp0[m
+[32m+[m
+[32m+[m[32mIF EXIST "%dp0%\node.exe" ([m
+[32m+[m[32m  SET "_prog=%dp0%\node.exe"[m
+[32m+[m[32m) ELSE ([m
+[32m+[m[32m  SET "_prog=node"[m
+[32m+[m[32m  SET PATHEXT=%PATHEXT:;.JS;=;%[m
+[32m+[m[32m)[m
+[32m+[m
+[32m+[m[32mendLocal & goto #_undefined_# 2>NUL || title %COMSPEC% & "%_prog%"  "%dp0%\..\acorn\bin\acorn" %*[m
+[1mdiff --git a/node_modules/.bin/acorn.ps1 b/node_modules/.bin/acorn.ps1[m
+[1mnew file mode 100644[m
+[1mindex 0000000..6f6dcdd[m
+[1m--- /dev/null[m
+[1m+++ b/node_modules/.bin/acorn.ps1[m
+[36m@@ -0,0 +1,28 @@[m
+[32m+[m[32m#!/usr/bin/env pwsh[m
+[32m+[m[32m$basedir=Split-Path $MyInvocation.MyCommand.Definition -Parent[m
+[32m+[m
+[32m+[m[32m$exe=""[m
+[32m+[m[32mif ($PSVersionTable.PSVersion -lt "6.0" -or $IsWindows) {[m
+[32m+[m[32m  # Fix case when both the Windows and Linux builds of Node[m
+[32m+[m[32m  # are installed in the same directory[m
+[32m+[m[32m  $exe=".exe"[m
+[32m+[m[32m}[m
+[32m+[m[32m$ret=0[m
+[32m+[m[32mif (Test-Path "$basedir/node$exe") {[m
+[32m+[m[32m  # Support pipeline input[m
+[32m+[m[32m  if ($MyInvocation.ExpectingInput) {[m
+[32m+[m[32m    $input | & "$basedir/node$exe"  "$basedir/../acorn/bin/acorn" $args[m
+[32m+[m[32m  } else {[m
+[32m+[m[32m    & "$basedir/node$exe"  "$basedir/../acorn/bin/acorn" $args[m
+[32m+[m[32m  }[m
+[32m+[m[32m  $ret=$LASTEXITCODE[m
+[32m+[m[32m} else {[m
+[32m+[m[32m  # Support pipeline input[m
+[32m+[m[32m  if ($MyInvocation.ExpectingInput) {[m
+[32m+[m[32m    $input | & "node$exe"  "$basedir/../acorn/bin/acorn" $args[m
+[32m+[m[32m  } else {[m
+[32m+[m[32m    & "node$exe"  "$basedir/../acorn/bin/acorn" $args[m
+[32m+[m[32m  }[m
+[32m+[m[32m  $ret=$LASTEXITCODE[m
+[32m+[m[32m}[m
+[32m+[m[32mexit $ret[m
+[1mdiff --git a/node_modules/.bin/autoprefixer b/node_modules/.bin/autoprefixer[m
+[1mnew file mode 100644[m
+[1mindex 0000000..2d2ee70[m
+[1m--- /dev/null[m
+[1m+++ b/node_modules/.bin/autoprefixer[m
+[36m@@ -0,0 +1,16 @@[m
+[32m+[m[32m#!/bin/sh[m
+[32m+[m[32mbasedir=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")[m
+[32m+[m
+[32m+[m[32mcase `uname` in[m
+[32m+[m[32m    *CYGWIN*|*MINGW*|*MSYS*)[m
+[32m+[m[32m        if command -v cygpath > /dev/null 2>&1; then[m
+[32m+[m[32m            basedir=`cygpath -w "$basedir"`[m
+[32m+[m[32m        fi[m
+[32m+[m[32m    ;;[m
+[32m+[m[32mesac[m
+[32m+[m
+[32m+[m[32mif [ -x "$basedir/node" ]; then[m
+[32m+[m[32m  exec "$basedir/node"  "$basedir/../autoprefixer/bin/autoprefixer" "$@"[m
+[32m+[m[32melse[m[41m [m
+[32m+[m[32m  exec node  "$basedir/../autoprefixer/bin/autoprefixer" "$@"[m
+[32m+[m[32mfi[m
+[1mdiff --git a/node_modules/.bin/autoprefixer.cmd b/node_modules/.bin/autoprefixer.cmd[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7ed417d[m
+[1m--- /dev/null[m
+[1m+++ b/node_modules/.bin/autoprefixer.cmd[m
+[36m@@ -0,0 +1,17 @@[m
+[32m+[m[32m@ECHO off[m
+[32m+[m[32mGOTO start[m
+[32m+[m[32m:find_dp0[m
+[32m+[m[32mSET dp0=%~dp0[m
+[32m+[m[32mEXIT /b[m
+[32m+[m[32m:start[m
+[32m+[m[32mSETLOCAL[m
+[32m+[m[32mCALL :find_dp0[m
+[32m+[m
+[32m+[m[32mIF EXIST "%dp0%\node.exe" ([m
+[32m+[m[32m  SET "_prog=%dp0%\node.exe"[m
+[32m+[m[32m) ELSE ([m
+[32m+[m[32m  SET "_prog=node"[m
+[

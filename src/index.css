@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans text-coal antialiased;
+    background-color: #f3f8fa;
+    background-image: radial-gradient(
+        ellipse at 88% 0%,
+        rgba(249, 115, 22, 0.16),
+        rgba(249, 115, 22, 0) 52%
+      ),
+      radial-gradient(
+        ellipse at 0% 22%,
+        rgba(15, 118, 110, 0.1),
+        rgba(15, 118, 110, 0) 46%
+      ),
+      linear-gradient(
+        180deg,
+        #fbfdfe 0%,
+        #f1f6f9 48%,
+        #e9f1f5 100%
+      );
+    background-repeat: no-repeat;
+    background-size: 100% 220vh;
+  }
+
+  ::selection {
+    @apply bg-ember/20 text-coal;
+  }
+}
+
+@layer components {
+  .no-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-bar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .card-hover {
+    @apply transition duration-300 hover:-translate-y-1 hover:shadow-lift;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em];
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-coal/12 bg-cream px-4 py-3 text-sm text-coal outline-none transition placeholder:text-coal/35 focus:border-ember focus:bg-white;
+  }
+}
